@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>jQuery Plugin - Date Selector</title>
+		<style>
+			body, div, p, h1 { margin: 0; padding: 0; }
+			body { font: 12px/1.7 "Trebuchet MS"; color: #555; }
+			#container { width: 960px; margin: 0 auto; }
+			#header,
+			#content { margin-bottom: 30px; }
+			#header,
+			#footer { padding: 15px 0; }
+			#footer { color: #999; }
+			
+			
+		</style>
+		<script src="../libs/jquery-loader.js"></script>
+		<script src="../src/jquery.dateselector.js"></script>
+		<script>
+			$(function() {
+				$('[name="date"]').dateselector();
+			});
+		</script>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<h1>jQuery Plugin - Dateselector - Demo</h1>
+			</div>
+			<div id="content">
+				<input type="text" name="date" />
+			</div>
+			<div id="footer">
+				<p>&copy; Copyright  by Nicolas.Z</p>
+			</div>
+		</div>
+	</body>
+</html>
