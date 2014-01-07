@@ -1,7 +1,7 @@
 {
   "name": "dateselector",
   "title": "Date Selector",
-  "description": "A jQuery plugin for date selection.",
+  "description": "A simple jQuery plugin for date selection.",
   "version": "0.1.0",
   "homepage": "https://github.com/nicolaszhao/dateselector",
   "author": {
