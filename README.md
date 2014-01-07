@@ -1,6 +1,6 @@
 # Input Limits
 
-A jQuery plugin for date selection.
+A simple jQuery plugin for date selection.
 
 **Current version:** [0.1.0]()
 
