@@ -13,13 +13,15 @@
 			#footer { padding: 15px 0; }
 			#footer { color: #999; }
 			
-			
+			.dateselector select { font-family: 'Trebuchet MS'; padding: 2px; margin-right: 3px; }
 		</style>
 		<script src="../libs/jquery-loader.js"></script>
 		<script src="../src/jquery.dateselector.js"></script>
 		<script>
 			$(function() {
-				$('[name="date"]').dateselector();
+				$('[name="date"]').dateselector({
+					yearRange: '-10:+10'
+				});
 			});
 		</script>
 	</head>

@@ -60,9 +60,9 @@
 			return new $.fn.dateselector.Dateselector(element, options);
 		}
 		
-		this._id = 'dateselector-' + ++uniqueId;
+		this._id = 'dateselector-' + (++uniqueId);
 		this._$element = $(element);
-		this._$div = $('<div id="' + this._id + '" class="dateselector" />').insertBefore(this._$element);
+		this._$div = $('<div id="' + this._id + '" class="dateselector" />').insertBefore(this._$element).css('display', 'inline-block');
 		this._options = $.extend({}, options);
 		this._create();
 	};
@@ -79,7 +79,7 @@
 					$day = $div.find('.dateselector-day'),
 					year = $div.find('.dateselector-year').val(),
 					month = $div.find('.dateselector-month').val(),
-					day, originalDay, lastDay, date;
+					day, originalDay, lastDay;
 				
 				if ($(this).is('.dateselector-year, .dateselector-month')) {
 					originalDay = $day.find('option:selected').index();
@@ -174,7 +174,7 @@
 	
 	$.fn.dateselector.utils = {
 		isLeapYear: function(year) {
-			return !(year % 4) && ((year % 100 !== 0) || !(year % 400) );
+			return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0 );
 		},
 		
 		formatDate: function(format, date) {
