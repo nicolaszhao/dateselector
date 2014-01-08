@@ -1,4 +1,4 @@
-# Input Limits
+# Dateselector
 
 A simple jQuery plugin for date selection.
 
