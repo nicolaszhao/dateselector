@@ -2,7 +2,7 @@
 
 A simple jQuery plugin for date selection.
 
-**Current version:** [0.2.0](https://github.com/nicolaszhao/dateselector/archive/v0.2.0.tar.gz)
+**Current version:** [1.0.0](https://github.com/nicolaszhao/dateselector/archive/v1.0.0.tar.gz)
 
 ## Usage
 Include jQuery and the plugin on your page. Then select a input element and call the dateselector method on DOM ready.
@@ -52,6 +52,41 @@ Set one or more options for the dateselector.
 **Code example:**
 	
 	$('[name="date"]').dateselector('option', {dateFormat: 'yy-mm-dd'});
+	
+***
+
+**value()**  
+Returns: String   
+Gets the current value as a formatted date.    
+
+**Code example:**
+	
+	$('[name="date"]').dateselector('value'); // e.g. 02/20/2014
+	
+***
+
+**value( year[, month] [, day] )**  
+Returns: jQuery   
+To set the dateselector value.
+
+* **year**    
+	Type: Number or String    
+	If passed a string and only 1 argument, the value is parsed based on the dateFormat.
+	
+* **month**   
+	Type: Number   
+	Set the month of the current date to the value.
+	
+* **day**   
+	Type: Number   
+	Set the day of the current date to the value.
+
+**Code examples:**
+	
+	$('[name="date"]').dateselector('value', '02/20/2014');
+	$('[name="date"]').dateselector('value', 2014, 2, 20);
+
+
 
 ## Theming
 If dateselector specific styling is needed, the following CSS class names can be used:
