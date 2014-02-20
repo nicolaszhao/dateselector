@@ -3,28 +3,26 @@
 	module('dateselector: options');
 	
 	test('dateFormat', function() {
-		expect(3);
-		
 		var $date = $('#dateselector').dateselector({
-			dateFormat: 'yy-mm-dd'
-		});
+				yearRange: '-10:+10',
+				dateFormat: 'yy-mm-dd'
+			}),
+			date = new Date();
 		
-		equal($date.val(), '1949-01-01', 'yy-mm-dd: ' + $date.val());
+		equal($date.val(), $.fn.dateselector.utils.formatDate('yy-mm-dd', date), 'yy-mm-dd: ' + $date.val());
 		
-		$date.dateselector({
+		$date.dateselector('option', {
 			dateFormat: 'm/d/y'
 		});
-		equal($date.val(), '1/1/49', 'm/d/y: ' + $date.val());
+		equal($date.val(), $.fn.dateselector.utils.formatDate('m/d/y', date), 'm/d/y: ' + $date.val());
 		
-		$date.dateselector({
+		$date.dateselector('option', {
 			dateFormat: 'mm, yy'
 		});
-		equal($date.val(), '01, 1949', 'mm, yy: ' + $date.val());
+		equal($date.val(), $.fn.dateselector.utils.formatDate('mm, yy', date), 'mm, yy: ' + $date.val());
 	});
 	
 	test('yearRange', function() {
-		expect(3);
-		
 		var $date = $('#dateselector').dateselector(),
 			thisYear = new Date().getFullYear(),
 			
@@ -32,13 +30,11 @@
 				var $year,
 					ret;
 				
-				$date.dateselector({
+				$year = $date.dateselector('option', {
 					yearRange: format
-				});
+				}).prev('.dateselector').find('.dateselector-year');
 				
-				$year = $date.prev('.dateselector').find('.dateselector-year');
-				
-				ret = $year.val();
+				ret = $year.find('option:first').prop('selected', true).end().val();
 				$year.find('option:last').prop('selected', true);
 				ret += ':' + $year.val();
 				return ret;
@@ -52,14 +48,28 @@
 	module('dateselector: methods');
 	
 	test('option', function() {
-		var $date = $('#dateselector').dateselector(),
-			thisYear = new Date().getFullYear();
+		var $date = $('#dateselector').dateselector();
 		
 		$date.dateselector('option', {
 			dateFormat: 'yy-mm-dd',
 			yearRange: '-10:+10'
 		});
-		equal($date.val(), (thisYear - 10) + '-01-01', $date.val());
+		equal($date.data('dateselector')._options.dateFormat, 'yy-mm-dd');
+		equal($date.data('dateselector')._options.yearRange, '-10:+10');
+	});
+	
+	test('value', function() {
+		var $date = $('#dateselector').dateselector({
+			yearRange: '1982:-1'
+		});
+		
+		$date.dateselector('value', 1982, 1, 9);
+		equal($date.val(), '01/09/1982', 'pass 3 arguments');
+		
+		$date.dateselector('value', '11/13/2009');
+		equal($date.val(), '11/13/2009', 'pass 1 arguments');
+		
+		equal($date.dateselector('value'), '11/13/2009', 'pass 0 arguments');
 	});
 	
 }(jQuery));
